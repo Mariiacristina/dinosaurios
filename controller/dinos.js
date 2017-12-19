@@ -5,12 +5,13 @@ const dinosaurios = require('../model/dinos')
     res.json ([]);
   };
 
-function postDino(req, res) {
-  dinosaurios.insertDino(err, dinoStored)
-    if (err) res.status(500).send({message: 'no se guardo el dino :('})
+function postDino(dataDino, res) {
+  dinosaurios.insertDino(dataDino, (err, res) => {
+    if (err) {res.status(500).send({message: 'no se guardo el dino :('})
+  }else {
     res.status(200).send({message: 'se guardo el dino! '})
-
-};
+  }}
+)};
 
 
 
@@ -21,3 +22,14 @@ module.exports = {
   //putDino
   //deleteDino
 };
+
+/*
+{
+	"nombre" : "Tiranosaurio Rex",
+	"tipo": "Terrestre",
+	"tipo_alimento": "Carnivoro",
+	"region": "America del Norte"
+}
+
+
+*/

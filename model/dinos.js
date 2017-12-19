@@ -9,12 +9,22 @@ database: 'dinosauriosDB',
 });
 
 
-function insertDino(dino, status) {
+function insertDino(req, res) {
   if(connection){
-  connection.query('INSERT INTO dinosauriosDB SET ?', dino)
-} else {
-  throw err;
-}};
+      const dino = {
+        id: null,
+        nombre: req.body.nombre,
+        tipo: req.body.tipo,
+        tipo_alimento: req.body.tipo_alimento,
+        region: req.body.region,
+        created_at: null
+      };
+
+      connection.query('INSERT INTO dinosaurios SET ?', dino, (err, result) => {
+        if(err) {throw err; }
+        else {res(null, {'insertId': result.insertId})}
+      })
+    }};
 
 
 

@@ -2,6 +2,7 @@ const express = require ('express')
 const bodyParser = require ('body-parser')
 const morgan = require ('morgan')
 const app = express ()
+const rutas = require ('./routes/rutas')
 
 
 //setting siesque quiero hostearlo en otro lado
@@ -12,7 +13,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 
 //rutass -> controler ->model -> sql
-const rutas = require ('./routes/rutas')
+app.use('/', rutas);
 
 
 app.listen(app.get('port'), () => {
