@@ -22,7 +22,7 @@ function insertDino(req, res) {
 
       connection.query('INSERT INTO dinosaurios SET ?', dino, (err, result) => {
         if(err) {throw err; }
-        else {res(null, {'insertId': result.insertId})}
+        else {res(null, dino)}
       })
     }};
 

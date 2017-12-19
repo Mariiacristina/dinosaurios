@@ -7,10 +7,12 @@ const dinosaurios = require('../model/dinos')
 
 function postDino(dataDino, res) {
   dinosaurios.insertDino(dataDino, (err, res) => {
-    if (err) {res.status(500).send({message: 'no se guardo el dino :('})
-  }else {
-    res.status(200).send({message: 'se guardo el dino! '})
-  }}
+    if (err) {res.status(500).send({message: 'no se guardo el dino :('})}
+    else {res.status(200).json({
+      success: true,
+      message: 'se guardo el dino!',
+      data: res })}
+  }
 )};
 
 
